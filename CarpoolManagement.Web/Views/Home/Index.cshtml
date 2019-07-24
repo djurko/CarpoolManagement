@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Carpool Management</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Carpools", "Index", "Carpools")</h2>
+        <p>
+            CRUD for Carpools
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Employees", "Index", "Employees")</h2>
+        <p>
+            CRUD for Employees
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Travel Plans", "Index", "TravelPlans")</h2>
+        <p>
+            CRUD for Travel Plans
+        </p>
+        <h4>@Html.ActionLink("Monthly View", "MonthlyView", "TravelPlans")</h4>
+    </div>
+</div>

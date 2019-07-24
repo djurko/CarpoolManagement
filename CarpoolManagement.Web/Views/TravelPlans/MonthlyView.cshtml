@@ -1,0 +1,73 @@
+﻿@using System.Linq
+@model Dictionary<string, List<CarpoolManagement.Common.Models.TravelPlan>>
+
+@{
+    ViewBag.Title = "Monthly View";
+}
+
+<h2>Monthly View</h2>
+
+<p>
+    @Html.ActionLink("<<< Back", "Index", "Home")
+</p>
+
+
+@foreach (var item in Model)
+{
+    <h3>@item.Key</h3>
+    <table class="table">
+        <tr>
+            <th>
+                <label>Start Location</label>
+            </th>
+            <th>
+                <label>End Location</label>
+            </th>
+            <th>
+                <label>Start Date</label>
+            </th>
+            <th>
+                <label>End Date</label>
+            </th>
+            <th>
+                <label>Car</label>
+            </th>
+            <th>
+                <label>Employees</label>
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var el in Model[item.Key])
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => el.StartLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => el.EndLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => el.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => el.EndDate)
+                </td>
+                <td>
+                    @Html.ActionLink(el.Car.Name, "Details", "Carpools", new { id = el.CarId }, null)
+                </td>
+                <td>
+                    @foreach (var em in el.EmployeeTravelPlans)
+                    {
+                        @Html.ActionLink(em.Employee.Name, "Details", "Employees", new { id = em.EmployeeId }, null)
+                        <br>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = el.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = el.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = el.Id })
+                </td>
+            </tr>
+        }
+    </table>
+}
